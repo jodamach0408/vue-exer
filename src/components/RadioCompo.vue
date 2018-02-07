@@ -10,7 +10,7 @@
         :value="item"
         @change="updateParent($event)"
         :required=mandatory
-        :readonly="readonly"
+        :disabled="readonly"
       >{{ item }}
       </md-radio>
     </div>
@@ -44,6 +44,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .md-radio.md-required label:after {
+    content: '';
+  }
   .label.required:after {
     content: '*';
     color: red;
