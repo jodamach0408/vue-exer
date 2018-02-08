@@ -162,7 +162,12 @@ export default {
   computed: {
     displayName: {
       get () {
-        return this.getValue('firstname') + ' ' + this.getValue('lastname')
+        var firstname = this.getValue('firstname')
+        var lastname = this.getValue('lastname')
+        if (!firstname && !lastname) {
+          return 'User'
+        }
+        return firstname + ' ' + lastname + '\'s'
       }
     }
   }
