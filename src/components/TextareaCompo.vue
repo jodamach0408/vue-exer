@@ -3,16 +3,15 @@
     <div class="md-layout-item md-size-25 label" v-bind:class="{ required : mandatory }">{{ $t(label) }}</div>
     <div class="md-layout-item md-size-75">
       <md-field>
-        <md-input
+        <md-textarea
           :placeholder="placeholder"
           :id="controlName"
           :value="value"
           @input="updateParent($event)"
           :required=mandatory
-          :type="inputType"
           :readonly="readonly"
         >
-        </md-input>
+        </md-textarea>
       </md-field>
     </div>
   </div>
@@ -28,16 +27,10 @@ import CompoMixin from './CompoMixin'
 Vue.use(VueMaterial)
 
 export default {
-  name: 'TextCompo',
+  name: 'TextareaCompo',
   mixins: [CompoMixin],
   data () {
     return {
-    }
-  },
-  props: {
-    inputType: {
-      type: String,
-      default: 'text'
     }
   }
 }

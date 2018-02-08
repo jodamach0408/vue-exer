@@ -1,7 +1,10 @@
 export default {
   props: {
     value: String,
-    readonly: Boolean,
+    readonly: {
+      type: Boolean,
+      default: false
+    },
     controlName: {
       type: String,
       required: true
@@ -18,11 +21,7 @@ export default {
     radioOptions: String
   },
   methods: {
-    validate: function () {
-      console.log(this.$refs.self.value)
-    },
     updateParent: function (val) {
-      console.log(val)
       this.$emit('input', val)
     }
   }

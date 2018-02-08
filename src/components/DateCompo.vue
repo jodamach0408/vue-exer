@@ -1,12 +1,12 @@
 <template>
   <div class="md-layout md-gutter">
-    <div class="md-layout-item md-size-25 label" v-bind:class="{ required : mandatory }">{{ label }}</div>
+    <div class="md-layout-item md-size-25 label" v-bind:class="{ required : mandatory }">{{ $t(label) }}</div>
     <div class="md-layout-item md-size-75">
       <md-datepicker ref="picker"
         :placeholder="placeholder"
         :id="controlName"
         :value="value"
-        @input="transformAndUpdateParent($event)"
+        @input="formatAndUpdateParent($event)"
         :required=mandatory
         :readonly="readonly"
       >
@@ -33,8 +33,7 @@ export default {
     }
   },
   methods: {
-    transformAndUpdateParent (val) {
-      console.log(val)
+    formatAndUpdateParent (val) {
       this.updateParent(this.dateToHTMLString(val))
     },
     dateToHTMLString (date) {

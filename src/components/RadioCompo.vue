@@ -1,6 +1,6 @@
 <template>
   <div class="md-layout md-gutter">
-    <div class="md-layout-item md-size-25 label" v-bind:class="{ required : mandatory }">{{ label }}</div>
+    <div class="md-layout-item md-size-25 label" v-bind:class="{ required : mandatory }">{{ $t(label) }}</div>
     <div class="md-layout-item md-size-75">
       <md-radio
         :key="key"
@@ -51,7 +51,7 @@ export default {
     content: '*';
     color: red;
   }
-  .md-radio {
+  /* .md-radio {
     display: flex;
-  }
+  } */
 </style>
