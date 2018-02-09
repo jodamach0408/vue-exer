@@ -51,7 +51,7 @@ export default {
     content: '*';
     color: red;
   }
-  /* .md-radio {
+  .md-radio {
     display: flex;
-  } */
+  }
 </style>

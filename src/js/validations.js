@@ -26,6 +26,7 @@ export default {
       }
     },
     validateMandatory (item) {
+      console.log(item)
       if (!item.field) {
         return 'errors.mandatory'
       }

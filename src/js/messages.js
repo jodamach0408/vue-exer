@@ -15,9 +15,11 @@ export const MESSAGES = {
       minLength: 'Min Length',
       maxLength: 'Max Length',
       placeholder: 'Placeholder',
-      options: 'Options'
+      options: 'Options',
+      newComponent: 'New Component'
     },
     buttons: {
+      ok: 'OK',
       cancel: 'Cancel',
       save: 'Save',
       edit: 'Edit',
@@ -38,9 +40,19 @@ export const MESSAGES = {
       firstname: 'Pika (First Name)',
       lastname: 'Pika (Last Name)',
       gender: 'Pika (Gender)',
-      birthday: 'Pika (Birthday)'
+      birthday: 'Pika (Birthday)',
+      label: 'Pika Label',
+      controlType: 'Pika Control Type',
+      mandatory: 'Pika Mandatory',
+      minLength: 'Pika Min Length',
+      maxLength: 'Pika Max Length',
+      placeholder: 'Pika Placeholder',
+      options: 'Pika Options',
+      newComponent: 'Pika New Component'
+
     },
     buttons: {
+      ok: 'Pika OK',
       cancel: 'Pika (Cancel)',
       save: 'Pika (Save)',
       edit: 'Pika (Edit)',

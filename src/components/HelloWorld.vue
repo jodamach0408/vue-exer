@@ -1,14 +1,20 @@
 <template>
   <md-content>
-    <div class="md-layout-item">
-      <md-field>
-        <label for="language">{{ $t('labels.language') }}</label>
-        <md-select v-model="language" name="language" id="language" md-dense>
-          <md-option value="en">English</md-option>
-          <md-option value="pkm">Pikachu</md-option>
-        </md-select>
-      </md-field>
-    </div>
+    <md-card>
+      <md-card-content>
+        <div class="md-layout md-gutter md-alignment-bottom-right">
+          <div class="md-layout-item md-size-25">
+            <md-field>
+              <label for="language">{{ $t('labels.language') }}</label>
+              <md-select v-model="language" name="language" id="language" md-dense>
+                <md-option value="en">English</md-option>
+                <md-option value="pkm">Pikachu</md-option>
+              </md-select>
+            </md-field>
+          </div>
+        </div>
+      </md-card-content>
+    </md-card>
     <md-card v-if="errors.length" class="md-layout md-size-50 md-small-size-100 md-accent">
       <md-card-content>
         <ul>
@@ -78,24 +84,33 @@
           </div>
           <!-- <button v-on:click="log()">XXX</button> -->
         </div>
+        <md-button @click="promptModal" class="md-raised md-primary">
+          {{ $t('buttons.addComponent') }}
+        </md-button>
       </md-card-content>
     </md-card>
-    <modal-compo v-if="showModal" @close="addComponent">
-      <div slot="body">
-        <div v-for="(item, key) in newCompDetails" :key="key">
-          <component
-            :is="item.type"
-            v-bind="item.props"
-            v-model="item.field"
-            :ref="item.props.controlName"
-          >
-          </component>
-        </div>
-      </div>
-    </modal-compo>
-    <md-button @click="promptModal" class="md-raised md-primary">
-      {{ $t('buttons.addComponent') }}
-    </md-button>
+    <md-dialog :md-active.sync="showModal">
+      <md-dialog-title>{{ $t('labels.newComponent') }}</md-dialog-title>
+      <md-card class="md-layout-item md-size-50 md-small-size-100">
+        <md-card-content>
+          <div class="md-layout md-gutter">
+            <div class="md-layout-item md-size-100" v-for="(item, key) in newCompDetails" :key="key">
+              <component
+                :is="item.type"
+                v-bind="item.props"
+                v-model="item.field"
+                :ref="item.props.controlName"
+              >
+              </component>
+            </div>
+          </div>
+        </md-card-content>
+      </md-card>
+      <md-dialog-actions>
+        <md-button class="md-primary" @click="showModal = false">{{ $t('buttons.cancel') }}</md-button>
+        <md-button class="md-primary" @click="addComponent">{{ $t('buttons.ok') }}</md-button>
+      </md-dialog-actions>
+    </md-dialog>
   </md-content>
 </template>
 
@@ -111,7 +126,6 @@ import TextCompo from '@/components/TextCompo'
 import TextareaCompo from '@/components/TextareaCompo'
 import RadioCompo from '@/components/RadioCompo'
 import DateCompo from '@/components/DateCompo'
-import ModalCompo from '@/components/ModalCompo'
 import { MESSAGES } from '@/js/messages.js'
 import { NEW_COMPO } from '@/js/new_component.js'
 
@@ -131,8 +145,7 @@ export default {
     TextCompo,
     TextareaCompo,
     RadioCompo,
-    DateCompo,
-    ModalCompo
+    DateCompo
   },
   data () {
     return {
@@ -326,5 +339,9 @@ export default {
 
   .error-box {
     max-height: 200px;
+  }
+
+  .md-dialog {
+    width: 800px;
   }
 </style>
